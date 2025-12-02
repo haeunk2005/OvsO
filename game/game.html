@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OvsO 게임</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <h1 class="main-title">뭘 하며 시간을 보낼까?</h1>
+    <div id="game-area">
+        <div id="objects">
+            <img src="../images/controller.png" class="object" id="game-console" alt="게임기" data-action="게임하기">
+            <img src="../images/phone.png" class="object" id="phone" alt="핸드폰" data-action="SNS하기">
+            <img src="../images/book.png" class="object" id="book" alt="책" data-action="자기계발">
+            <img src="../images/door.png" class="object" id="door" alt="문" data-action="외출하기">
+        </div>
+
+        <div id="gauges">
+            <div class="gauge-container">
+                <div class="gauge-label">온라인</div>
+                <div class="gauge-bar" id="online-bar"></div>
+            </div>
+            <div class="gauge-container">
+                <div class="gauge-label">오프라인</div>
+                <div class="gauge-bar" id="offline-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 클릭 시 활동 표시 -->
+    <div id="tooltip" style="display:none;"></div>
+
+    <!-- 엔딩 이미지 전체 화면 -->
+    <div id="ending-container" style="display:none;">
+        <img id="ending-image" src="" alt="엔딩">
+    </div>
+
+    <!-- 배경음악 -->
+    <audio id="bgm" src="../sound/mainbgm.mp3" autoplay loop></audio>
+    <!-- 클릭 사운드 -->
+    <audio id="clickSound" src="../sound/gage.wav"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>

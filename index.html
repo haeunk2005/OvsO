@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O vs O</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-section">
+            <div class="logo-area">
+                <img id="game-logo" src="./images/logo.png" alt="게임 로고"> 
+                <div id="game-title">
+                    현대인의 생존법
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="character-area">
+                <img id="main-character" src="./images/character.png" alt="주인공 이미지"> 
+            </div>
+        
+            <nav class="main-menu">
+                <button id="startGameBtn">게임 시작</button>
+                <button id="settingsBtn">설정</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 배경음악 & 버튼 효과음 -->
+    <audio id="bgm" src="./sound/mainbgm.mp3" loop></audio>
+    <audio id="clickSound" src="./sound/button.wav"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

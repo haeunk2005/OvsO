@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설정</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 전체 화면 중앙 정렬 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1e4d3; /* 메인 화면 배경색 유지 */
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+        }
+
+        .setting-container {
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 사운드 설정 타이틀 */
+        h1.title {
+            font-size: 3.6em;        /* 크게 */
+            font-weight: 700;
+            color: #aed9e0;          /* 버튼 색과 동일 */
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* 슬라이더 그룹 */
+        .sound-setting-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* 레이블 텍스트 */
+        .sound-label {
+            font-size: 2em;          /* 기존보다 2배 크게 */
+            font-weight: 600;
+            color: #4a4a4a;          /* 버튼 색과 동일 */
+            margin-bottom: 10px;
+        }
+
+        /* 슬라이더 */
+        .sound-slider {
+            width: 100%;
+        }
+
+        /* 버튼 */
+        #confirmBtn {
+            padding: 18px 30px;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #4a4a4a;
+            background-color: #aed9e0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #7eabbf;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        #confirmBtn:hover {
+            background-color: #7eabbf;
+            color: #ffffff;
+        }
+
+        #confirmBtn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #7eabbf;
+        }
+    </style>
+</head>
+<body>
+    <div class="setting-container">
+        <h1 class="title">사운드 설정</h1>
+
+        <div class="sound-setting-box">
+            <label class="sound-label" for="bgmRange">배경음악</label>
+            <input type="range" id="bgmRange" min="0" max="100" value="50" class="sound-slider">
+
+            <label class="sound-label" for="sfxRange">효과음</label>
+            <input type="range" id="sfxRange" min="0" max="100" value="50" class="sound-slider">
+        </div>
+
+        <button id="confirmBtn">확인</button>
+    </div>
+
+    <!-- BGM & 버튼 효과음 -->
+    <audio id="bgm" src="sound/mainbgm.mp3" loop></audio>
+    <audio id="clickSound" src="sound/button.wav"></audio>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const bgm = document.getElementById('bgm');
+    const clickSound = document.getElementById('clickSound');
+
+    const bgmRange = document.getElementById('bgmRange');
+    const sfxRange = document.getElementById('sfxRange');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    // 저장된 값 불러오기
+    const savedBgm = localStorage.getItem("bgmVolume");
+    const savedSfx = localStorage.getItem("sfxVolume");
+
+    bgm.volume = savedBgm !== null ? savedBgm / 100 : 0.4;
+    bgmRange.value = savedBgm !== null ? savedBgm : 50;
+
+    clickSound.volume = savedSfx !== null ? savedSfx / 100 : 0.7;
+    sfxRange.value = savedSfx !== null ? savedSfx : 50;
+
+    // BGM 자동재생
+    bgm.loop = true;
+    bgm.play().catch(() => console.log("자동재생 차단됨"));
+
+    function playClickSound() {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
+
+    // 슬라이더 변경 시 즉시 볼륨 적용 및 효과음 재생
+    bgmRange.addEventListener('input', () => {
+        bgm.volume = bgmRange.value / 100;
+        localStorage.setItem("bgmVolume", bgmRange.value);
+    });
+
+    sfxRange.addEventListener('input', () => {
+        clickSound.volume = sfxRange.value / 100;
+        localStorage.setItem("sfxVolume", sfxRange.value);
+        playClickSound();
+    });
+
+    // 확인 버튼 클릭 시 메인 화면으로 이동
+    confirmBtn.addEventListener('click', () => {
+        playClickSound();
+        window.location.href = "../index.html";
+    });
+});
+
+    </script>
+</body>
+</html>
