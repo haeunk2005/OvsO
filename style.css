@@ -1,0 +1,116 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1e4d3;
+}
+
+/* 전체 컨테이너 */
+.main-container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    height: 80vh;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 30px;
+}
+
+/* 왼쪽 섹션 */
+.left-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-right: 50px;
+}
+
+/* 로고 영역 */
+.logo-area {
+    margin-left: -40px; 
+    margin-bottom: 20px;
+    margin-top: -10px; /* 로고 위쪽 여백 감소 */
+}
+
+#game-logo {
+    width: 600px;
+    height: auto;
+}
+
+/* 게임 제목 스타일 */
+#game-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 3.6em;
+    font-weight: 700;
+    color: #1A1A1A;
+    line-height: 1.2;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: row;      /* 가로 나열 */
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 50px;
+    gap: 40px;                /* 캐릭터와 버튼 사이 간격 */
+}
+
+/* 캐릭터 영역 */
+.character-area {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+}
+
+#main-character {
+    max-height: 64%; /* ⭐ 기존 80%에서 0.8배 줄인 64%로 수정 ⭐ */
+    object-fit: contain;
+}
+
+/* 메뉴 버튼 그룹 */
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 350px;        /* ⭐ 버튼이 줄어들지 않도록 명확히 지정 */
+    min-width: 350px;    /* ⭐ flex 수축 방지 */
+    align-items: center; /* 버튼 중앙 */
+    justify-content: flex-end;
+}
+
+/* 버튼 스타일 */
+.main-menu button {
+    width: 100%;         /* ⭐ 버튼을 menu 영역 너비에 맞게 확장 */
+    padding: 20px 35px;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #4a4a4a;
+    background-color: #aed9e0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 0 #7eabbf;
+}
+
+
+.main-menu button:hover {
+    background-color: #7eabbf;
+    color: #ffffff;
+}
+
+.main-menu button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #7eabbf;
+}
